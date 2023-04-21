@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 十四说
+title: 十四
 subtitle: ''
 description: ''
 keywords:
@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://xushiqing.xyz
+url: https://shiqingxu.gthub.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -96,6 +96,10 @@ pagination_dir: page
 include:
 exclude:
 ignore:
+
+# sitemap
+sitemap:
+  path: sitemap.xml
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
