@@ -8,6 +8,8 @@ tags:
 
 解决思路是更改浏览器的 user agent 骗网站认为你使用的是其它操作系统。
 
+<!--more-->
+
 打开微软系统镜像的 [下载网站](https://www.microsoft.com/en-us/software-download/windows10) ，按 F12 进入控制台，然后按右上角的三个圆点，在弹出的菜单中选择 more tools，然后点击选择 network conditions。
 
 ![](/1.png)

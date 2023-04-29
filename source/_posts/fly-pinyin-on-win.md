@@ -10,6 +10,8 @@ tags:
 
 可新建一个文本文档，将以下内容复制进去，保存为.reg文件，并双击运行即可。
 
+<!--more-->
+
 ```
 Windows Registry Editor Version 5.00
 
