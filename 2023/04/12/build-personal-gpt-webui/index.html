@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"shiqingxu.gthub.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Chat-GPT&amp;#x4E0D;&amp;#x51FA;&amp;#x610F;&amp;#x5916;&amp;#x5730;&amp;#x53D8;&amp;#x5F97;&amp;#x96BE;&amp;#x4EE5;&amp;#x8BBF;&amp;#x95EE;&amp;#xFF0C;&amp;#x4E0D;&amp;#x8FC7;&amp;#x597D;&amp;#x5728;&amp;#x6709; API KEY &amp;#x7684;&amp;#x8BDD;&amp;#xFF0C;&amp;#x8FD8;&amp;#x662F;&amp;#x6709">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署私人 Chat-GPT Web UI">
+<meta property="og:url" content="https://shiqingxu.gthub.io/2023/04/12/build-personal-gpt-webui/index.html">
+<meta property="og:site_name" content="十四">
+<meta property="og:description" content="Chat-GPT&amp;#x4E0D;&amp;#x51FA;&amp;#x610F;&amp;#x5916;&amp;#x5730;&amp;#x53D8;&amp;#x5F97;&amp;#x96BE;&amp;#x4EE5;&amp;#x8BBF;&amp;#x95EE;&amp;#xFF0C;&amp;#x4E0D;&amp;#x8FC7;&amp;#x597D;&amp;#x5728;&amp;#x6709; API KEY &amp;#x7684;&amp;#x8BDD;&amp;#xFF0C;&amp;#x8FD8;&amp;#x662F;&amp;#x6709">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2023/04/12/build-personal-gpt-webui/api_key.jpg">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2023/04/12/build-personal-gpt-webui/domains.jpg">
+<meta property="article:published_time" content="2023-04-12T08:32:38.000Z">
+<meta property="article:modified_time" content="2025-06-11T01:02:23.926Z">
+<meta property="article:author" content="14says">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shiqingxu.gthub.io/2023/04/12/build-personal-gpt-webui/api_key.jpg">
+
+
+<link rel="canonical" href="https://shiqingxu.gthub.io/2023/04/12/build-personal-gpt-webui/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://shiqingxu.gthub.io/2023/04/12/build-personal-gpt-webui/","path":"2023/04/12/build-personal-gpt-webui/","title":"部署私人 Chat-GPT Web UI"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>部署私人 Chat-GPT Web UI | 十四</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="十四" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">十四</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">更新问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#API-KEY-%E4%B8%8E-Access-Code"><span class="nav-number">2.</span> <span class="nav-text">API KEY 与 Access Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%A7%81%E4%BA%BA%E5%9F%9F%E5%90%8D%E8%BD%AC%E5%8F%91"><span class="nav-number">3.</span> <span class="nav-text">使用私人域名转发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%82%B9%E6%84%9F%E6%83%B3"><span class="nav-number">4.</span> <span class="nav-text">一点感想</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">14says</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://shiqingxu.gthub.io/2023/04/12/build-personal-gpt-webui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="14says">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十四">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="部署私人 Chat-GPT Web UI | 十四">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          部署私人 Chat-GPT Web UI
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-04-12 16:32:38" itemprop="dateCreated datePublished" datetime="2023-04-12T16:32:38+08:00">2023-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-06-11 09:02:23" itemprop="dateModified" datetime="2025-06-11T09:02:23+08:00">2025-06-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Chat-GPT&#x4E0D;&#x51FA;&#x610F;&#x5916;&#x5730;&#x53D8;&#x5F97;&#x96BE;&#x4EE5;&#x8BBF;&#x95EE;&#xFF0C;&#x4E0D;&#x8FC7;&#x597D;&#x5728;&#x6709; API KEY &#x7684;&#x8BDD;&#xFF0C;&#x8FD8;&#x662F;&#x6709;&#x529E;&#x6CD5;&#x7ED5;&#x8FC7;&#x9650;&#x5236;&#x3002;</p>
+<p>&#x6709;&#x4EBA;&#x505A;&#x4E86;&#x4E2A;<a target="_blank" rel="noopener" href="https://github.com/Yidadaa/ChatGPT-Next-Web">&#x4E00;&#x952E;&#x90E8;&#x7F72;&#x7684;&#x9879;&#x76EE;</a>&#xFF0C;&#x53EF;&#x4EE5;&#x5728; Vercel &#x4E0A;&#x90E8;&#x7F72;&#x4E00;&#x4E2A;&#x79C1;&#x4EBA;&#x7684; Web UI&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x4E00;&#x952E;&#x662F;&#x771F;&#x7684;&#x4E00;&#x952E;&#xFF08;&#x70B9;&#x51FB; Deploy &#x5373;&#x53EF;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x8FC7;&#x7A0B;&#x6CA1;&#x5565;&#x597D;&#x5199;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x6709;&#x4E00;&#x4E9B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x70B9;&#x3002;</p>
+<span id="more"></span>
+
+<h4 id="&#x66F4;&#x65B0;&#x95EE;&#x9898;"><a href="#&#x66F4;&#x65B0;&#x95EE;&#x9898;" class="headerlink" title="&#x66F4;&#x65B0;&#x95EE;&#x9898;"></a>&#x66F4;&#x65B0;&#x95EE;&#x9898;</h4><p>&#x5982;&#x679C;&#x76F4;&#x63A5;&#x4E00;&#x952E;&#x90E8;&#x7F72;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x73B0;&#x603B;&#x662F;&#x63D0;&#x793A;&#x201C;&#x5B58;&#x5728;&#x66F4;&#x65B0;&#x201D;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x662F;&#x7531;&#x4E8E; Vercel &#x4F1A;&#x9ED8;&#x8BA4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x9879;&#x76EE;&#x800C;&#x4E0D;&#x662F; fork &#x539F;&#x9879;&#x76EE;&#xFF0C;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x65E0;&#x6CD5;&#x6B63;&#x786E;&#x5730;&#x68C0;&#x6D4B;&#x66F4;&#x65B0;&#x3002; </p>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x5220;&#x9664;&#x6389;&#x539F;&#x5148;&#x7684;&#x4ED3;&#x5E93;&#xFF1B;</li>
+<li>&#x4F7F;&#x7528;&#x9875;&#x9762;&#x53F3;&#x4E0A;&#x89D2;&#x7684; fork &#x6309;&#x94AE;&#xFF0C;fork &#x539F;&#x9879;&#x76EE;&#xFF1B;</li>
+<li>&#x5728; Vercel &#x91CD;&#x65B0;&#x9009;&#x62E9;&#x5E76;&#x90E8;&#x7F72;&#xFF0C;<a target="_blank" rel="noopener" href="https://github.com/Yidadaa/ChatGPT-Next-Web/blob/main/docs/vercel-cn.md#%E5%A6%82%E4%BD%95%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE">&#x8BF7;&#x67E5;&#x770B;&#x8BE6;&#x7EC6;&#x6559;&#x7A0B;</a>&#x3002;</li>
+</ul>
+<h4 id="API-KEY-&#x4E0E;-Access-Code"><a href="#API-KEY-&#x4E0E;-Access-Code" class="headerlink" title="API KEY &#x4E0E; Access Code"></a>API KEY &#x4E0E; Access Code</h4><p>&#x6309;&#x7167;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#x91CD;&#x65B0;&#x90E8;&#x7F72;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x5728;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x91CC;&#x6DFB;&#x52A0;&#x81EA;&#x5DF1;&#x7684; API KEY&#xFF0C;access code &#x53EF;&#x52A0;&#x53EF;&#x4E0D;&#x52A0;&#xFF0C;&#x4E0D;&#x52A0;&#x7684;&#x8BDD;&#x5B58;&#x5728; token &#x88AB;&#x8FC5;&#x901F;&#x6076;&#x610F;&#x6D88;&#x8017;&#x5149;&#x7684;&#x98CE;&#x9669;&#x3002;</p>
+<p><img src="/2023/04/12/build-personal-gpt-webui/api_key.jpg" alt="api_key"></p>
+<h4 id="&#x4F7F;&#x7528;&#x79C1;&#x4EBA;&#x57DF;&#x540D;&#x8F6C;&#x53D1;"><a href="#&#x4F7F;&#x7528;&#x79C1;&#x4EBA;&#x57DF;&#x540D;&#x8F6C;&#x53D1;" class="headerlink" title="&#x4F7F;&#x7528;&#x79C1;&#x4EBA;&#x57DF;&#x540D;&#x8F6C;&#x53D1;"></a>&#x4F7F;&#x7528;&#x79C1;&#x4EBA;&#x57DF;&#x540D;&#x8F6C;&#x53D1;</h4><p>&#x90E8;&#x7F72;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x6709;&#x5F88;&#x5927;&#x6982;&#x7387;&#x8FD8;&#x662F;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#xFF0C;&#x8FD9;&#x65F6;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x88AB;&#x5899;&#x7684;&#x57DF;&#x540D;&#x6765;&#x8F6C;&#x53D1;&#x3002;&#x6211;&#x53BB;namecheap&#x4E70;&#x4E86;&#x4E00;&#x4E2A;&#xFF0C;&#x4EF7;&#x683C;&#x5341;&#x5206;&#x516C;&#x9053;&#xFF0C;&#x53EA;&#x82B1;&#x4E86;1.16&#x5200;&#x3002;</p>
+<p>&#x5230; vercel &#x7684;&#x9879;&#x76EE;&#x7BA1;&#x7406;&#x9875;&#x9762;&#xFF0C;&#x6309;&#x7167;&#x9875;&#x9762;&#x63D0;&#x793A;&#x6DFB;&#x52A0;domains&#x5E76;&#x628A;&#x57DF;&#x540D;&#x7684;DNS&#x89E3;&#x6790;&#x8FC7;&#x6765;&#x5373;&#x53EF;&#x3002;</p>
+<p><img src="/2023/04/12/build-personal-gpt-webui/domains.jpg" alt="domains"></p>
+<p>&#x81F3;&#x6B64;&#x5E94;&#x8BE5;&#x5C31;&#x53EF;&#x4EE5;&#x65E0;&#x969C;&#x788D;&#x8BBF;&#x95EE;&#x4E86;&#x3002;</p>
+<h4 id="&#x4E00;&#x70B9;&#x611F;&#x60F3;"><a href="#&#x4E00;&#x70B9;&#x611F;&#x60F3;" class="headerlink" title="&#x4E00;&#x70B9;&#x611F;&#x60F3;"></a>&#x4E00;&#x70B9;&#x611F;&#x60F3;</h4><p>&#x53C8;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x4E16;&#x754C;&#x5927;&#x90E8;&#x5206;&#x5730;&#x533A;&#x4EBA;&#x6C11;&#x90FD;&#x80FD;&#x65E0;&#x969C;&#x788D;&#x7528;&#x4E0A;&#xFF0C;&#x800C;&#x67D0;&#x4E9B;&#x5730;&#x533A;&#x7684;&#x4EBA;&#x6C11;&#x9700;&#x8981;&#x8DE8;&#x8D8A;&#x91CD;&#x91CD;&#x969C;&#x788D;&#x624D;&#x80FD;&#x7528;&#x4E0A;&#x7684;&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x4EE5;&#x53CA;&#xFF0C;&#x80FD;&#x591F;&#x90E8;&#x7F72;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x7684;&#x4EBA;&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x6070;&#x6070;&#x662F;&#x7528;&#x4E0D;&#x5230;&#x8BE5;&#x670D;&#x52A1;&#x7684;&#x4EBA;&#x3002;&#x7ED9;&#x4EB2;&#x670B;&#x597D;&#x53CB;&#x7528;&#x5012;&#x662F;&#x633A;&#x4E0D;&#x9519;&#x7684;&#x3002;</p>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/17/how-to-download-win10-iso-file-from-microsoft/" rel="prev" title="如何从微软直接下载 win10 系统安装镜像">
+                  <i class="fa fa-angle-left"></i> 如何从微软直接下载 win10 系统安装镜像
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/04/13/The-Death-and-Life-of-Great-American-Cities/" rel="next" title="傲慢与偏见 ——— 读《美国大城市的死与生》">
+                  傲慢与偏见 ——— 读《美国大城市的死与生》 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">14says</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
