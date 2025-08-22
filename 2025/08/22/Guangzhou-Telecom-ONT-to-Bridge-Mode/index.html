@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"shiqingxu.gthub.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x7ED9;&amp;#x5BB6;&amp;#x91CC;&amp;#x6DFB;&amp;#x7F6E;&amp;#x4E86;&amp;#x4E00;&amp;#x53F0;&amp;#x5C0F;&amp;#x8BBE;&amp;#x5907;&amp;#x505A;&amp;#x5BB6;&amp;#x5EAD;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#xFF0C;&amp;#x4E3A;&amp;#x4E86;&amp;#x7528;&amp;#x4E0A;&amp;#x8BBE;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="广州电信光猫改桥接模式">
+<meta property="og:url" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/index.html">
+<meta property="og:site_name" content="十四">
+<meta property="og:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x7ED9;&amp;#x5BB6;&amp;#x91CC;&amp;#x6DFB;&amp;#x7F6E;&amp;#x4E86;&amp;#x4E00;&amp;#x53F0;&amp;#x5C0F;&amp;#x8BBE;&amp;#x5907;&amp;#x505A;&amp;#x5BB6;&amp;#x5EAD;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#xFF0C;&amp;#x4E3A;&amp;#x4E86;&amp;#x7528;&amp;#x4E0A;&amp;#x8BBE;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/01login.png">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/02mainpage.jpg">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/03%E9%85%8D%E7%BD%AE%E5%90%91%E5%AF%BC.png">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/04%E5%85%89%E7%8C%AB%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/05itv.png">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/06%E7%BB%88%E7%AB%AF%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81%E4%BF%AE%E6%94%B9.png">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/07%E7%94%B5%E8%84%91%E6%8B%A8%E5%8F%B7.png">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/08%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E6%8B%A8%E5%8F%B7.png">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/09IPV4DHCP.png">
+<meta property="og:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/10ipv6DHCP.png">
+<meta property="article:published_time" content="2025-08-22T00:37:39.000Z">
+<meta property="article:modified_time" content="2025-08-22T00:55:02.409Z">
+<meta property="article:author" content="14says">
+<meta property="article:tag" content="折腾">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/01login.png">
+
+
+<link rel="canonical" href="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/","path":"2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/","title":"广州电信光猫改桥接模式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>广州电信光猫改桥接模式 | 十四</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="十四" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">十四</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%B7%A5%E4%BD%9C%EF%BC%9A%E8%8E%B7%E5%8F%96%E5%AE%BD%E5%B8%A6%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">前置工作：获取宽带账号密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E5%85%89%E7%8C%AB%E8%B6%85%E7%BA%A7%E7%AE%A1%E7%90%86%E5%91%98%E5%90%8E%E5%8F%B0"><span class="nav-number">2.</span> <span class="nav-text">登录光猫超级管理员后台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E6%8B%A8%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">路由器设置拨号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E5%85%89%E7%8C%AB-DHCP-%E6%9C%8D%E5%8A%A1%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">关闭光猫 DHCP 服务（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">14says</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://shiqingxu.gthub.io/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="14says">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十四">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="广州电信光猫改桥接模式 | 十四">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          广州电信光猫改桥接模式
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-22 08:37:39 / Modified: 08:55:02" itemprop="dateCreated datePublished" datetime="2025-08-22T08:37:39+08:00">2025-08-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>&#x6700;&#x8FD1;&#x7ED9;&#x5BB6;&#x91CC;&#x6DFB;&#x7F6E;&#x4E86;&#x4E00;&#x53F0;&#x5C0F;&#x8BBE;&#x5907;&#x505A;&#x5BB6;&#x5EAD;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4E3A;&#x4E86;&#x7528;&#x4E0A;&#x8BBE;&#x5907;&#x7684; 2.5G &#x7684;&#x7F51;&#x53E3;&#xFF0C;&#x987A;&#x4FBF;&#x5347;&#x7EA7;&#x4E86;&#x4E0B;&#x5185;&#x7F51;&#x73AF;&#x5883;&#x3002;&#x672C;&#x6253;&#x7B97;&#x4E70;&#x4E2A; 2.5G &#x4EA4;&#x6362;&#x673A;&#xFF0C;&#x5076;&#x7136;&#x53D1;&#x73B0;&#x5982;&#x4ECA;&#x4E24;&#x767E;&#x591A;&#x5757;&#x94B1;&#x5C31;&#x80FD;&#x4E70;&#x5230;&#x5E26; 2 &#x4E2A; 2.5G &#x7F51;&#x53E3;&#x7684; WiFi7 &#x8DEF;&#x7531;&#x5668;&#x4E86;&#x3002;&#x6682;&#x65F6;&#x6211;&#x4E5F;&#x53EA;&#x6709;&#x4E00;&#x53F0;&#x8BBE;&#x5907;&#x9700;&#x8981; 2.5G &#x7F51;&#x53E3;&#xFF0C;&#x7D22;&#x6027;&#x6CA1;&#x4E70;&#x4EA4;&#x6362;&#x673A;&#x6539;&#x4E70;&#x8DEF;&#x7531;&#x5668;&#x4E86;&#x3002;</p>
+<p>&#x4E4B;&#x524D;&#x5149;&#x732B;&#x4E00;&#x76F4;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x8DEF;&#x7531;&#x6A21;&#x5F0F;&#xFF0C;&#x751A;&#x81F3;&#x4E00;&#x5EA6;&#x76F4;&#x63A5;&#x7528;&#x5149;&#x732B;&#x7684; WiFi &#x4FE1;&#x53F7;&#xFF0C;&#x73B0;&#x5728;&#x65E2;&#x7136;&#x6709;&#x66F4;&#x597D;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x4E86;&#xFF0C;&#x987A;&#x4FBF;&#x6539;&#x6210;&#x6865;&#x63A5;&#x6A21;&#x5F0F;&#xFF0C;&#x8BA9;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x66F4;&#x7A33;&#x5B9A;&#x4E00;&#x4E9B;&#xFF0C;&#x540E;&#x7EED;&#x8FDC;&#x7A0B;&#x6298;&#x817E;&#x5BB6;&#x5EAD;&#x670D;&#x52A1;&#x5668;&#x4E5F;&#x65B9;&#x4FBF;&#x3002;</p>
+<span id="more"></span>
+
+<h3 id="&#x524D;&#x7F6E;&#x5DE5;&#x4F5C;&#xFF1A;&#x83B7;&#x53D6;&#x5BBD;&#x5E26;&#x8D26;&#x53F7;&#x5BC6;&#x7801;"><a href="#&#x524D;&#x7F6E;&#x5DE5;&#x4F5C;&#xFF1A;&#x83B7;&#x53D6;&#x5BBD;&#x5E26;&#x8D26;&#x53F7;&#x5BC6;&#x7801;" class="headerlink" title="&#x524D;&#x7F6E;&#x5DE5;&#x4F5C;&#xFF1A;&#x83B7;&#x53D6;&#x5BBD;&#x5E26;&#x8D26;&#x53F7;&#x5BC6;&#x7801;"></a>&#x524D;&#x7F6E;&#x5DE5;&#x4F5C;&#xFF1A;&#x83B7;&#x53D6;&#x5BBD;&#x5E26;&#x8D26;&#x53F7;&#x5BC6;&#x7801;</h3><p>&#x4F7F;&#x7528;&#x8DEF;&#x7531;&#x5668;&#x62E8;&#x53F7;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5BBD;&#x5E26;&#x7684;&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#xFF0C;&#x6709;&#x7684;&#x5BBD;&#x5E26;&#x5E08;&#x5085;&#x88C5;&#x673A;&#x65F6;&#x4F1A;&#x5199;&#x4E0B;&#x6765;&#x8D34;&#x5728;&#x5149;&#x732B;&#x4E0A;&#xFF0C;&#x6211;&#x4E4B;&#x524D;&#x5728;&#x522B;&#x7684;&#x57CE;&#x5E02;&#x65F6;&#x9047;&#x5230;&#x8FC7;&#x3002;&#x5E7F;&#x5DDE;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x8D34;&#xFF0C;&#x6211;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#xFF0C;&#x662F;&#x6253;&#x7535;&#x4FE1;&#x5BA2;&#x670D;&#x8BA9;&#x4ED6;&#x4EEC;&#x5E2E;&#x6211;&#x91CD;&#x7F6E;&#x4E86;&#x4E00;&#x4E0B;&#x3002;</p>
+<p>&#x4E4B;&#x524D;&#x8FD8;&#x6709;&#x4E00;&#x6B21;&#x4F4F;&#x5728;&#x516C;&#x53F8;&#x63D0;&#x4F9B;&#x7684;&#x516C;&#x5BD3;&#x91CC;&#xFF0C;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x9510;&#x6377;&#x8DEF;&#x7531;&#x5668;&#x63D2;&#x5230;&#x5149;&#x732B;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#x590D;&#x5236;&#x8FC7;&#x53BB;&#xFF0C;&#x8FD9;&#x6B21;&#x6211;&#x6CA1;&#x6709;&#x5C1D;&#x8BD5;&#x3002;</p>
+<h3 id="&#x767B;&#x5F55;&#x5149;&#x732B;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;"><a href="#&#x767B;&#x5F55;&#x5149;&#x732B;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;" class="headerlink" title="&#x767B;&#x5F55;&#x5149;&#x732B;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;"></a>&#x767B;&#x5F55;&#x5149;&#x732B;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x540E;&#x53F0;</h3><p>&#x7F51;&#x4E0A;&#x7684;&#x5F88;&#x591A;&#x5982;&#x4F55;&#x83B7;&#x5F97;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x5BC6;&#x7801;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x627E;&#x7535;&#x4FE1;&#x5E08;&#x5085;&#x8981;&#x7684;&#xFF0C;&#x6709;&#x6253;&#x5BA2;&#x670D;&#x7535;&#x8BDD;&#x8981;&#x7684;&#xFF0C;&#x8FD8;&#x6709;&#x81EA;&#x5DF1;&#x60F3;&#x529E;&#x6CD5;&#x7834;&#x89E3;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x4F46;&#x6211;&#x8FD9;&#x91CC;&#x7684;&#x7535;&#x4FE1;&#x5E08;&#x5085;&#x88C5;&#x673A;&#x65F6;&#x5C31;&#x8DDF;&#x6211;&#x8BF4;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x5BC6;&#x7801;&#x662F;&#x52A8;&#x6001;&#x7684;&#x4ED6;&#x4E5F;&#x6CA1;&#x6709;&#xFF0C;&#x90FD;&#x662F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x4E0B;&#x53D1;&#xFF0C;&#x4E8E;&#x662F;&#x4E5F;&#x6CA1;&#x627E;&#x4ED6;&#x8981;&#x3002;</p>
+<p>&#x5076;&#x7136;&#x53D1;&#x73B0;&#x5176;&#x5B9E;&#x4E0D;&#x9700;&#x8981;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;&#x5BC6;&#x7801;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x5149;&#x732B; IP &#x5730;&#x5740;&#x540E;&#x9762;&#x52A0;&#x4E0A;&#x7AEF;&#x53E3;&#x53F7; 8080&#xFF0C;&#x7528;&#x666E;&#x901A;&#x8D26;&#x6237;&#x5C31;&#x80FD;&#x767B;&#x5F55;&#x540E;&#x53F0;&#x4E86;&#xFF0C;&#x5982;&#x56FE;&#xFF1A;</p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/01login.png"></p>
+<p>&#x767B;&#x5F55;&#x540E;&#x7684;&#x9875;&#x9762;&#x5982;&#x56FE;&#xFF1A;</p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/02mainpage.jpg"></p>
+<p>&#x70B9;&#x51FB;&#x5DE6;&#x4FA7;<strong>&#x914D;&#x7F6E;&#x5411;&#x5BFC;</strong>&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BBE;&#x7F6E;&#x8DEF;&#x7531;&#x8FD8;&#x662F;&#x6865;&#x63A5;&#x6A21;&#x5F0F;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x9009;&#x62E9;&#x6865;&#x63A5;&#x6A21;&#x5F0F;&#xFF0C;&#x70B9;&#x51FB;&#x4E0B;&#x4E00;&#x6B65;</p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/03%E9%85%8D%E7%BD%AE%E5%90%91%E5%AF%BC.png"></p>
+<p>&#x4E0B;&#x4E00;&#x6B65;&#x65E0;&#x7EBF;&#x7F51;&#x7EDC;&#x914D;&#x7F6E;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x6C42;&#x914D;&#x7F6E;&#xFF0C;&#x6211;&#x662F;&#x76F4;&#x63A5;&#x5173;&#x6389;&#x4E86;</p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/04%E5%85%89%E7%8C%AB%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.png"></p>
+<p>&#x63A5;&#x4E0B;&#x6765; iTV &#x8BBE;&#x7F6E;&#x9875;&#x9762;&#xFF0C;&#x76F4;&#x63A5;&#x4E0B;&#x4E00;&#x6B65;&#x5373;&#x53EF;</p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/05itv.png"></p>
+<p>&#x4E0B;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#xFF0C;&#x7EC8;&#x7AEF;&#x5BC6;&#x7801;&#x4FEE;&#x6539;&#xFF0C;&#x4E0D;&#x7528;&#x5904;&#x7406;&#x76F4;&#x63A5;&#x4E0B;&#x4E00;&#x6B65;</p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/06%E7%BB%88%E7%AB%AF%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81%E4%BF%AE%E6%94%B9.png"></p>
+<p>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#xFF0C;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x786E;&#x8BA4;&#xFF0C;&#x786E;&#x8BA4;&#x62E8;&#x53F7;&#x7C7B;&#x578B;&#x4E3A;<strong>&#x7535;&#x8111;&#x62E8;&#x53F7;</strong>&#xFF0C;&#x70B9;&#x51FB;&#x5B8C;&#x6210;&#x3002;</p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/07%E7%94%B5%E8%84%91%E6%8B%A8%E5%8F%B7.png"></p>
+<h3 id="&#x8DEF;&#x7531;&#x5668;&#x8BBE;&#x7F6E;&#x62E8;&#x53F7;"><a href="#&#x8DEF;&#x7531;&#x5668;&#x8BBE;&#x7F6E;&#x62E8;&#x53F7;" class="headerlink" title="&#x8DEF;&#x7531;&#x5668;&#x8BBE;&#x7F6E;&#x62E8;&#x53F7;"></a>&#x8DEF;&#x7531;&#x5668;&#x8BBE;&#x7F6E;&#x62E8;&#x53F7;</h3><p>&#x63A5;&#x4E0B;&#x6765;&#x767B;&#x5F55;&#x8DEF;&#x7531;&#x5668;&#x540E;&#x53F0;&#xFF0C;&#x4EE5;&#x6211;&#x8FD9;&#x592A;&#x4E2D;&#x5174;&#x8DEF;&#x7531;&#x5668;&#x4E3A;&#x4F8B;&#xFF0C;&#x70B9;&#x51FB;&#x5DE6;&#x4FA7;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x70B9;&#x51FB; WAN1&#xFF08;&#x4E3B;&#x8981;&#xFF09;&#xFF0C;&#x4E0A;&#x7F51;&#x65B9;&#x5F0F;&#x9009;&#x62E9;<strong>&#x62E8;&#x53F7;&#x4E0A;&#x7F51;&#xFF08;PPPoE&#xFF09;</strong>&#xFF0C;&#x586B;&#x5199;<strong>&#x4E0A;&#x7F51;&#x8D26;&#x53F7;</strong>&#x548C;<strong>&#x4E0A;&#x7F51;&#x5BC6;&#x7801;</strong>&#xFF0C;&#x70B9;&#x51FB;&#x63D0;&#x4EA4;&#x3002;</p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/08%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E6%8B%A8%E5%8F%B7.png"></p>
+<p>&#x81F3;&#x6B64;&#x5C31;&#x53EF;&#x4EE5;&#x7531;&#x8DEF;&#x7531;&#x5668;&#x62E8;&#x53F7;&#x4E0A;&#x7F51;&#xFF0C;&#x5149;&#x732B;&#x53EA;&#x63D0;&#x4F9B;&#x5E7F;&#x7535;&#x4FE1;&#x53F7;&#x8F6C;&#x6362;&#x529F;&#x80FD;&#x4E86;&#x3002;</p>
+<h3 id="&#x5173;&#x95ED;&#x5149;&#x732B;-DHCP-&#x670D;&#x52A1;&#xFF08;&#x53EF;&#x9009;&#xFF09;"><a href="#&#x5173;&#x95ED;&#x5149;&#x732B;-DHCP-&#x670D;&#x52A1;&#xFF08;&#x53EF;&#x9009;&#xFF09;" class="headerlink" title="&#x5173;&#x95ED;&#x5149;&#x732B; DHCP &#x670D;&#x52A1;&#xFF08;&#x53EF;&#x9009;&#xFF09;"></a>&#x5173;&#x95ED;&#x5149;&#x732B; DHCP &#x670D;&#x52A1;&#xFF08;&#x53EF;&#x9009;&#xFF09;</h3><p>&#x767B;&#x5F55;&#x5149;&#x732B;&#x540E;&#x53F0;&#xFF08;&#x6B64;&#x65F6;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x7528;&#x7F51;&#x7EBF;&#x8FDE;&#x63A5;&#x5149;&#x732B;&#x7684; LAN &#x53E3;&#x624D;&#x80FD;&#x767B;&#x5F55;&#x4E86;&#xFF09;&#xFF0C;&#x70B9;&#x51FB;<strong>&#x7F51;&#x7EDC;</strong> -&gt; <strong>IPV4 &#x8BBE;&#x7F6E;</strong>,&#x53D6;&#x6D88;&#x52FE;&#x9009; DHCP Server&#x3002;IPv6 &#x914D;&#x7F6E;&#x91CC;&#x4E5F;&#x540C;&#x6837;&#x8BBE;&#x7F6E;&#x3002;&#x70B9;&#x51FB;<strong>&#x4FDD;&#x5B58;/&#x5E94;&#x7528;</strong></p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/09IPV4DHCP.png"></p>
+<p><img src="/2025/08/22/Guangzhou-Telecom-ONT-to-Bridge-Mode/10ipv6DHCP.png"></p>
+<h3 id="&#x7ED3;&#x8BED;"><a href="#&#x7ED3;&#x8BED;" class="headerlink" title="&#x7ED3;&#x8BED;"></a>&#x7ED3;&#x8BED;</h3><p>&#x8BBE;&#x7F6E;&#x597D;&#x4E4B;&#x540E;&#x7528;&#x4E86;&#x51E0;&#x5929;&#xFF0C;&#x8BF4;&#x5B9E;&#x8BDD;&#x7F51;&#x7EDC;&#x7A33;&#x5B9A;&#x6027;&#x6CA1;&#x611F;&#x89C9;&#x51FA;&#x6709;&#x4EFB;&#x4F55;&#x533A;&#x522B;&#xFF0C;&#x56E0;&#x4E3A;&#x4E4B;&#x524D;&#x7528;&#x5149;&#x732B;&#x62E8;&#x53F7;&#x4E5F;&#x633A;&#x7A33;&#x5B9A;&#x7684;&#x3002;</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%98%E8%85%BE/" rel="tag"># 折腾</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/08/21/setting-startup-for-outlook/" rel="prev" title="为 Outlook 设置开机启动">
+                  <i class="fa fa-angle-left"></i> 为 Outlook 设置开机启动
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">14says</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
