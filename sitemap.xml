@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shiqingxu.gthub.io/2025/08/29/kill-wps-docer-autorun/</loc>
+    
+    <lastmod>2025-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shiqingxu.gthub.io/2025/08/26/passion-and-separation-of-tasks/</loc>
+    
+    <lastmod>2025-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shiqingxu.gthub.io/2025/08/28/update-hexo-theme-next/</loc>
+    
+    <lastmod>2025-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shiqingxu.gthub.io/2025/08/27/changing-typora-themes/</loc>
+    
+    <lastmod>2025-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://shiqingxu.gthub.io/2025/08/26/obsidian-as-a-browser/</loc>
     
     <lastmod>2025-08-26</lastmod>
@@ -155,7 +191,7 @@
   </url>
   
   <url>
-    <loc>https://shiqingxu.gthub.io/2020/04/17/how-to-download-win10-iso-file-from-microsoft/</loc>
+    <loc>https://shiqingxu.gthub.io/2023/05/09/four-days-in-a-van/</loc>
     
     <lastmod>2025-08-23</lastmod>
     
@@ -164,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://shiqingxu.gthub.io/2023/05/09/four-days-in-a-van/</loc>
+    <loc>https://shiqingxu.gthub.io/2020/04/17/how-to-download-win10-iso-file-from-microsoft/</loc>
     
     <lastmod>2025-08-23</lastmod>
     
@@ -220,64 +256,71 @@
 
   <url>
     <loc>https://shiqingxu.gthub.io/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://shiqingxu.gthub.io/tags/life/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <loc>https://shiqingxu.gthub.io/tags/hexo/</loc>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://shiqingxu.gthub.io/tags/hexo/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <loc>https://shiqingxu.gthub.io/tags/life/</loc>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shiqingxu.gthub.io/tags/%E6%8A%98%E8%85%BE/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shiqingxu.gthub.io/tags/reading/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shiqingxu.gthub.io/tags/fasting/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shiqingxu.gthub.io/tags/diet/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <lastmod>2025-08-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://shiqingxu.gthub.io/tags/think/</loc>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shiqingxu.gthub.io/tags/openai/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://shiqingxu.gthub.io/tags/%E6%84%9F%E6%83%B3/</loc>
-    <lastmod>2025-08-26</lastmod>
+    <lastmod>2025-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
