@@ -15,7 +15,7 @@ tags: [折腾, software]
 
 ## 关闭方法
 
-关闭方法比较简单，按`win+R`，输入`services.msc`，在弹出的窗口里找到`windows search`，双击该服务，点击`停止`即可。
+关闭方法比较简单，按`win+R`，输入`services.msc`，在弹出的窗口里找到`windows search`，双击该服务，点击停止，然后在启动类型中选择`禁用`即可。
 
 ![](/services_msc.png)
 
