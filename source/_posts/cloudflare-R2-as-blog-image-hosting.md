@@ -26,5 +26,35 @@ tags: [blog, 折腾]
 
 登录 Cloudflare 账户，在左侧菜单找到并进入 R2。
 
-![]({{ config.image_cdn_host }}/https://img.xushiqing.xyz/2025/09/cloudflare-dashboard-R2.png)
+![](https://img.xushiqing.xyz/2025/09/cloudflare-dashboard-R2.png)
+
+
+
+创建 bucket
+
+![](https://img.xushiqing.xyz/2025/09/cloudflare-create-bucket.png)
+
+输入 Bucket name，点击 `create bucket`完成创建
+
+![](https://img.xushiqing.xyz/2025/09/cloudflare-create-bucket-name.png)
+
+创建完成之后，在设置中绑定一个自定义域名，可以使用已经由 cloudflare 管理的域名的子域名，我在这里用了博客域名的子域名。
+
+![](https://img.xushiqing.xyz/2025/09/cloudflare-bucket-custom-domains.png)
+
+创建完成之后效果如图，就可以通过网络访问这个 Bucket 里的资源了。
+
+![](https://img.xushiqing.xyz/2025/09/cloudflare-bucket-custom-domains-added.png)
+
+## 
+
+至此已经可以通过 R2 来托管图片，实现存储与分发的分离，加速博客图片的加载速度。
+
+## 后续折腾计划 
+
+不过手动上传图片粘贴链接还是有一些问题。
+
+一是操作比较麻烦，计划后面设置一下 [PicGo](https://github.com/Molunerfinn/PicGo) ，简化图片上传的工作流；
+
+二是可维护性可能存在问题，比如后续更换了图床的地址之类的，需要逐个图片替换链接。尝试在 _config.yml 里设置图床地址以增强可维护性，但失败了，尚未找到原因后面有时间再研究吧。
 
