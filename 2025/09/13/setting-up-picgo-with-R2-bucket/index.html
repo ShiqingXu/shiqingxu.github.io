@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"shiqingxu.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.24.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="&amp;#x4E0A;&amp;#x6B21;&amp;#x5728; &amp;#x628A;Cloudflare R2 Bucket &amp;#x4F5C;&amp;#x4E3A;&amp;#x535A;&amp;#x5BA2;&amp;#x56FE;&amp;#x5E8A; &amp;#x4E2D;&amp;#x8BB0;&amp;#x5F55;&amp;#x4E86;&amp;#x56FE;&amp;#x7247;&amp;#x6258;&amp;#x7BA1;&amp;#x65B9;&amp;#x6848;&amp;#x7684;&amp;#x53D8;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 PicGo 配合 Cloudflare R2 优化博客图片上传体验">
+<meta property="og:url" content="https://shiqingxu.github.io/2025/09/13/setting-up-picgo-with-R2-bucket/index.html">
+<meta property="og:site_name" content="十四">
+<meta property="og:description" content="&amp;#x4E0A;&amp;#x6B21;&amp;#x5728; &amp;#x628A;Cloudflare R2 Bucket &amp;#x4F5C;&amp;#x4E3A;&amp;#x535A;&amp;#x5BA2;&amp;#x56FE;&amp;#x5E8A; &amp;#x4E2D;&amp;#x8BB0;&amp;#x5F55;&amp;#x4E86;&amp;#x56FE;&amp;#x7247;&amp;#x6258;&amp;#x7BA1;&amp;#x65B9;&amp;#x6848;&amp;#x7684;&amp;#x53D8;&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img.xushiqing.xyz/2025/09/1757767926-picgo-plugin-dashboard">
+<meta property="og:image" content="https://img.xushiqing.xyz/2025/09/1757769099-r2-manage-api-tokens">
+<meta property="og:image" content="https://img.xushiqing.xyz/2025/09/1757769294-r2-create-api-token">
+<meta property="og:image" content="https://img.xushiqing.xyz/2025/09/1757769491-r2-create-account-api-token">
+<meta property="og:image" content="https://img.xushiqing.xyz/2025/09/1757771712-r2-account-api-token-keys">
+<meta property="og:image" content="https://img.xushiqing.xyz/2025/09/1757768517-s3-plugin-setting-1">
+<meta property="og:image" content="https://img.xushiqing.xyz/2025/09/1757770319-s3-plugin-setting-2">
+<meta property="og:image" content="https://img.xushiqing.xyz/2025/09/1757771014-r2-pic-timestamp">
+<meta property="article:published_time" content="2025-09-13T12:34:19.000Z">
+<meta property="article:modified_time" content="2025-09-13T13:59:42.782Z">
+<meta property="article:author" content="14says">
+<meta property="article:tag" content="折腾">
+<meta property="article:tag" content="software">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.xushiqing.xyz/2025/09/1757767926-picgo-plugin-dashboard">
+
+
+<link rel="canonical" href="https://shiqingxu.github.io/2025/09/13/setting-up-picgo-with-R2-bucket/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://shiqingxu.github.io/2025/09/13/setting-up-picgo-with-R2-bucket/","path":"2025/09/13/setting-up-picgo-with-R2-bucket/","title":"使用 PicGo 配合 Cloudflare R2 优化博客图片上传体验"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用 PicGo 配合 Cloudflare R2 优化博客图片上传体验 | 十四</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="十四" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">十四</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-PicGo-%E5%8F%8A-S3-%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">安装 PicGo 及 S3 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Bucket-%E8%AE%BF%E9%97%AE-API"><span class="nav-number">2.</span> <span class="nav-text">配置 Bucket 访问 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-PicGo"><span class="nav-number">3.</span> <span class="nav-text">设置 PicGo</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">14says</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://shiqingxu.github.io/2025/09/13/setting-up-picgo-with-R2-bucket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="14says">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十四">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用 PicGo 配合 Cloudflare R2 优化博客图片上传体验 | 十四">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用 PicGo 配合 Cloudflare R2 优化博客图片上传体验
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-09-13 20:34:19 / Modified: 21:59:42" itemprop="dateCreated datePublished" datetime="2025-09-13T20:34:19+08:00">2025-09-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>&#x4E0A;&#x6B21;&#x5728; <a target="_blank" rel="noopener" href="https://xushiqing.xyz/2025/09/09/cloudflare-R2-as-blog-image-hosting/">&#x628A;Cloudflare R2 Bucket &#x4F5C;&#x4E3A;&#x535A;&#x5BA2;&#x56FE;&#x5E8A;</a> &#x4E2D;&#x8BB0;&#x5F55;&#x4E86;&#x56FE;&#x7247;&#x6258;&#x7BA1;&#x65B9;&#x6848;&#x7684;&#x53D8;&#x66F4;&#xFF0C;&#x5207;&#x6362;&#x5230;&#x8FD9;&#x4E2A;&#x65B9;&#x6848;&#x4E4B;&#x540E;&#x56FE;&#x7247;&#x7684;&#x8F7D;&#x5165;&#x901F;&#x5EA6;&#x786E;&#x5B9E;&#x6709;&#x4E86;&#x8D28;&#x7684;&#x63D0;&#x5347;&#xFF0C;&#x4E0D;&#x8FC7;&#x5199;&#x4F5C;&#x8FC7;&#x7A0B;&#x4E2D;&#x76F4;&#x63A5;&#x5728; R2 Bucket &#x9875;&#x9762;&#x4E0A;&#x4E0A;&#x4F20;&#x56FE;&#x7247;&#x3001;&#x83B7;&#x53D6;&#x94FE;&#x63A5;&#x975E;&#x5E38;&#x4E0D;&#x65B9;&#x4FBF;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x7528;&#x5230; <a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo">PicGo</a> &#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x6765;&#x4F18;&#x5316;&#x56FE;&#x7247;&#x4E0A;&#x4F20;&#x7684;&#x6D41;&#x7A0B;&#x3002;</p>
+<span id="more"></span>
+
+<h2 id="&#x5B89;&#x88C5;-PicGo-&#x53CA;-S3-&#x63D2;&#x4EF6;"><a href="#&#x5B89;&#x88C5;-PicGo-&#x53CA;-S3-&#x63D2;&#x4EF6;" class="headerlink" title="&#x5B89;&#x88C5; PicGo &#x53CA; S3 &#x63D2;&#x4EF6;"></a>&#x5B89;&#x88C5; PicGo &#x53CA; S3 &#x63D2;&#x4EF6;</h2><p><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo">PicGo</a> &#x672C;&#x4F53;&#x5E76;&#x4E0D;&#x76F4;&#x63A5;&#x652F;&#x6301; Cloudflare R2&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <a target="_blank" rel="noopener" href="https://github.com/wayjam/picgo-plugin-s3">picgo-plugin-s3</a> &#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x6765;&#x83B7;&#x5F97;&#x652F;&#x6301;&#x3002;&#x4E0B;&#x8F7D;&#x5B89;&#x88C5;&#x597D; PicGo &#x4E4B;&#x540E;&#xFF0C;&#x5148;&#x53BB;&#x63D2;&#x4EF6;&#x8BBE;&#x7F6E;&#x9875;&#x9762;&#x641C;&#x7D22;&#x5E76;&#x5B89;&#x88C5; S3 &#x63D2;&#x4EF6;&#x3002;&#x4E0D;&#x8FC7;&#x8FD9;&#x7B2C;&#x4E00;&#x6B65;&#x5C31;&#x9047;&#x5230;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x4E2A;&#x641C;&#x7D22;&#x6846;&#x91CC;&#x662F;&#x641C;&#x7D22;&#x4E0D;&#x5230;&#x4EFB;&#x4F55;&#x63D2;&#x4EF6;&#x7684;&#x3002;&#x4ECE;&#x7F51;&#x4E0A;&#x7684;&#x8BA8;&#x8BBA;&#x6765;&#x770B;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x5F88;&#x4E45;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x8F6C;&#x4E3A;&#x624B;&#x52A8;&#x5B89;&#x88C5;&#x3002;</p>
+<p>&#x5728;&#x7EC8;&#x7AEF;&#x91CC;&#x8FDB;&#x5165;<code>C:\Users\yourusername\AppData\Roaming\picgo</code>&#xFF0C;&#x8FD0;&#x884C;<code>npm install picgo-plugin-s3</code>&#x5373;&#x53EF;&#x5B89;&#x88C5;&#x3002;</p>
+<p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#x91CD;&#x542F; PicGo&#xFF0C;&#x5373;&#x53EF;&#x5728;&#x5DE6;&#x4FA7;&#x7684;<code>&#x63D2;&#x4EF6;&#x8BBE;&#x7F6E;</code>&#x91CC;&#x770B;&#x5230; Amazon S3 &#x63D2;&#x4EF6;&#x4E86;&#x3002;</p>
+<p><img src="https://img.xushiqing.xyz/2025/09/1757767926-picgo-plugin-dashboard"></p>
+<h2 id="&#x914D;&#x7F6E;-Bucket-&#x8BBF;&#x95EE;-API"><a href="#&#x914D;&#x7F6E;-Bucket-&#x8BBF;&#x95EE;-API" class="headerlink" title="&#x914D;&#x7F6E; Bucket &#x8BBF;&#x95EE; API"></a>&#x914D;&#x7F6E; Bucket &#x8BBF;&#x95EE; API</h2><p>&#x8981;&#x5B9E;&#x73B0;&#x901A;&#x8FC7; PicGo &#x4E0A;&#x4F20;&#x56FE;&#x7247;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x4E3A; Bucket &#x914D;&#x7F6E;&#x597D;&#x8BBF;&#x95EE;&#x7684; API&#x3002;</p>
+<p>&#x9996;&#x5148;&#x8FDB;&#x5165; Bucket &#x7684;&#x7BA1;&#x7406;&#x9762;&#x677F;&#xFF0C;&#x70B9;&#x51FB;&#x53F3;&#x4FA7;&#x7684; API&#xFF0C;&#x5728;&#x5F39;&#x51FA;&#x7684;&#x4E0B;&#x62C9;&#x5217;&#x8868;&#x4E2D;&#x70B9;&#x51FB; <code>Manage API Tokens</code>&#x3002;</p>
+<p><img src="https://img.xushiqing.xyz/2025/09/1757769099-r2-manage-api-tokens"></p>
+<p>&#x8FDB;&#x53BB;&#x4E4B;&#x540E;&#xFF0C;&#x70B9;&#x51FB;&#x53F3;&#x4FA7;&#x7684; <code>Create Account API token</code>&#x3002;</p>
+<p><img src="https://img.xushiqing.xyz/2025/09/1757769294-r2-create-api-token"></p>
+<p>&#x8FDB;&#x5165;&#x4E4B;&#x540E;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A; Token name&#xFF0C;&#x6743;&#x9650;&#x9009;&#x62E9;&#x8BFB;&#x5199;&#xFF0C;&#x7136;&#x540E;&#x6307;&#x5B9A;&#x8981;&#x4F7F;&#x7528;&#x7684; Bucket &#xFF0C;&#x6700;&#x540E;&#x70B9;&#x51FB;&#x53F3;&#x4E0B;&#x89D2;&#x7684;<code>Create Account API token</code>&#x3002;</p>
+<p><img src="https://img.xushiqing.xyz/2025/09/1757769491-r2-create-account-api-token"></p>
+<p>&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x9875;&#x9762;&#x4E2D;&#x4F1A;&#x5C55;&#x793A;&#x51E0;&#x4E2A;&#x9700;&#x8981;&#x586B;&#x5230; PicGo &#x4E2D;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x53EA;&#x4F1A;&#x5C55;&#x793A;&#x4E00;&#x6B21;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x590D;&#x5236;&#x4E0B;&#x6765;&#x3002;</p>
+<p>&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
+<p><code>Access Key ID</code></p>
+<p><code>Secret Access Key</code></p>
+<p><code>jurisdiction-specific endpoints</code></p>
+<p>&#x6700;&#x540E;&#x70B9;&#x51FB;finish&#x5373;&#x53EF;&#x3002;</p>
+<p><img src="https://img.xushiqing.xyz/2025/09/1757771712-r2-account-api-token-keys"></p>
+<h2 id="&#x8BBE;&#x7F6E;-PicGo"><a href="#&#x8BBE;&#x7F6E;-PicGo" class="headerlink" title="&#x8BBE;&#x7F6E; PicGo"></a>&#x8BBE;&#x7F6E; PicGo</h2><p>&#x63A5;&#x4E0B;&#x6765;&#x6253;&#x5F00; PicGo&#xFF0C;&#x70B9;&#x51FB; Amazon S3 &#x63D2;&#x4EF6;&#xFF0C;&#x586B;&#x5165;&#x521A;&#x624D;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x4E09;&#x4E2A;&#x5B57;&#x6BB5;&#x3002;</p>
+<p><code>&#x5E94;&#x7528;&#x5BC6;&#x94A5; ID</code> &#x5373; <code>Access Key ID</code></p>
+<p><code>&#x5E94;&#x7528;&#x5BC6;&#x94A5;</code> &#x5373; <code>Secret Access Key</code></p>
+<p> <code>&#x81EA;&#x5B9A;&#x4E49;&#x8282;&#x70B9;</code> &#x5373; <code>jurisdiction-specific endpoints</code></p>
+<p><img src="https://img.xushiqing.xyz/2025/09/1757768517-s3-plugin-setting-1"></p>
+<p><img src="https://img.xushiqing.xyz/2025/09/1757770319-s3-plugin-setting-2"></p>
+<p>&#x6876;&#x540D;&#x5C31;&#x586B;&#x7528;&#x4E8E;&#x5B58;&#x5728;&#x56FE;&#x7247;&#x7684;Bucket&#x7684;&#x540D;&#x5B57;&#x3002;</p>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x8F93;&#x51FA;URL&#xFF0C;&#x586B;&#x5199;&#x4E4B;&#x524D;&#x4E3A; Bucket &#x8BBE;&#x7F6E;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x57DF;&#x540D;&#xFF0C;&#x540E;&#x9762;&#x52A0;&#x4E00;&#x4E2A; <code>/{path}</code>,&#x4F8B;&#x5982;&#x8FD9;&#x6837;&#xFF1A;</p>
+<p><code>https://img.youdomin.com/{path}</code>&#xFF0C;&#x5176;&#x4E2D; <code>{path}</code> &#x90E8;&#x5206;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x66FF;&#x6362;&#x4E3A;&#x8BBE;&#x7F6E;&#x7684;&#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x3002;</p>
+<p>&#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x7684;&#x8DEF;&#x5F84;&#x53D6;&#x51B3;&#x4E8E;&#x81EA;&#x5DF1;&#x7684;&#x504F;&#x597D;&#xFF0C;&#x6211;&#x9009;&#x62E9;&#x4EE5;&#x6708;&#x4E3A;&#x5355;&#x4F4D;&#x7EC4;&#x7EC7;&#x56FE;&#x7247;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x6545;&#x8BBE;&#x7F6E;&#x4E3A;</p>
+<p><code>{year}/{month}/{timestamp}-{fileName}</code></p>
+<p>&#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#xFF0C;&#x4E0A;&#x4F20;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x83B7;&#x53D6; <code>&#x5E74;/&#x6708;/&#x81EA;&#x52A8;&#x751F;&#x6210;&#x65F6;&#x95F4;&#x6233;-&#x6587;&#x4EF6;&#x540D;</code>&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x4F5C;&#x4E3A;&#x94FE;&#x63A5;&#x7684;&#x540E;&#x7F00;&#x3002;</p>
+<p>&#x8BBE;&#x7F6E;&#x597D;&#x4E4B;&#x540E;&#x70B9;&#x51FB;&#x786E;&#x5B9A;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x4E3A;&#x9ED8;&#x8BA4;&#x56FE;&#x5E8A;&#x3002;</p>
+<p>&#x4E4B;&#x540E;&#x4E0A;&#x4F20;&#x7684;&#x56FE;&#x7247;&#x5728; Bucket &#x9762;&#x677F;&#x91CC;&#x5C55;&#x793A;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x5982;&#x56FE;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x5DE6;&#x8FB9;&#x7684;&#x6570;&#x5B57;&#x90E8;&#x5206;&#x662F;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x8FD9;&#x6837;&#x5373;&#x4F7F;&#x4E0A;&#x4F20;&#x540C;&#x6837;&#x6587;&#x4EF6;&#x540D;&#x7684;&#x56FE;&#x7247;&#xFF0C;&#x4E5F;&#x4F1A;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x540E;&#x4E00;&#x5F20;&#x56FE;&#x7247;&#x8E22;&#x6389;&#x524D;&#x4E00;&#x5F20;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p><img src="https://img.xushiqing.xyz/2025/09/1757771014-r2-pic-timestamp"></p>
+<p>&#x8BBE;&#x7F6E;&#x5B8C;&#x6210;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; PicGo &#x4E0A;&#x4F20;&#x56FE;&#x7247;&#xFF0C;&#x4E0A;&#x4F20;&#x5B8C;&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x56FE;&#x7247;&#x94FE;&#x63A5;&#x5230;&#x526A;&#x5207;&#x677F;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8D34;&#x5230;&#x6587;&#x7AE0;&#x4E2D;&#xFF0C;&#x5199;&#x4F5C;&#x6D41;&#x7A0B;&#x987A;&#x7545;&#x8BB8;&#x591A;&#x3002;</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%98%E8%85%BE/" rel="tag"># 折腾</a>
+              <a href="/tags/software/" rel="tag"># software</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/09/11/change-screenshot-tool-to-pixpin/" rel="prev" title="截图软件变更为 PixPin">
+                  <i class="fa fa-angle-left"></i> 截图软件变更为 PixPin
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">14says</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
